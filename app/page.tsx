@@ -25,27 +25,21 @@ export default function Home() {
     <div className="flex h-screen w-full overflow-hidden bg-background text-foreground">
       <Sidebar />
       <main className="flex-1 flex flex-col min-w-0">
-        {selectedCategory === 'cookies' ? (
-          <div className="h-full flex flex-col">
-            <DataTable />
-          </div>
-        ) : (
-          <ResizablePanelGroup direction="vertical">
-            <ResizablePanel defaultSize={50} minSize={30}>
-              <div className="h-full flex flex-col">
-                <DataTable />
-              </div>
-            </ResizablePanel>
+        <ResizablePanelGroup direction="vertical">
+          <ResizablePanel defaultSize={50} minSize={30}>
+            <div className="h-full flex flex-col">
+              <DataTable />
+            </div>
+          </ResizablePanel>
 
-            <ResizableHandle withHandle />
+          <ResizableHandle withHandle />
 
-            <ResizablePanel defaultSize={50} minSize={20}>
-              <div className="h-full">
-                <ContentEditor />
-              </div>
-            </ResizablePanel>
-          </ResizablePanelGroup>
-        )}
+          <ResizablePanel defaultSize={50} minSize={20}>
+            <div className="h-full">
+              <ContentEditor />
+            </div>
+          </ResizablePanel>
+        </ResizablePanelGroup>
       </main>
     </div>
   );
