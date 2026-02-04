@@ -1,11 +1,11 @@
 import * as React from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useStorageStore } from "@/store/storage-store";
-import { Database, FileJson, Cookie, HardDrive } from "lucide-react";
+import { Database, FileJson, Cookie, HardDrive, History } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function Sidebar() {
-    const { data, selectCategory, selectedCategory } = useStorageStore();
+    const { data, selectCategory, selectedCategory, view, setView } = useStorageStore();
 
     if (!data) return <div className="p-4 text-muted-foreground">Loading storage...</div>;
 
@@ -68,6 +68,24 @@ export function Sidebar() {
                     ))}
                     
                     {/* Indexed DB Sub-list could go here */}
+
+                    <div className="pt-4 mt-4 border-t">
+                        <h3 className="px-3 text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                            Tools
+                        </h3>
+                        <button
+                             onClick={() => setView('time-machine')}
+                             className={cn(
+                                 "w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-colors",
+                                 view === 'time-machine'
+                                     ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium" 
+                                     : "hover:bg-sidebar-accent/50 text-muted-foreground"
+                             )}
+                        >
+                            <History className="w-4 h-4" />
+                            <span className="flex-1 text-left">Time Machine</span>
+                        </button>
+                    </div>
                 </div>
             </ScrollArea>
         </div>

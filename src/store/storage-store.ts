@@ -13,6 +13,9 @@ export interface StorageStore {
   scan: () => Promise<void>;
   selectRecord: (record: StorageRecord | CookieRecord | IndexedDBRecord | null) => void;
   selectCategory: (category: 'localStorage' | 'sessionStorage' | 'cookies' | 'indexedDB' | null) => void;
+  
+  view: 'inspector' | 'time-machine';
+  setView: (view: 'inspector' | 'time-machine') => void;
 }
 
 export const useStorageStore = create<StorageStore>((set) => ({
@@ -20,6 +23,7 @@ export const useStorageStore = create<StorageStore>((set) => ({
   isLoading: false,
   selectedRecord: null,
   selectedCategory: null,
+  view: 'inspector',
 
   scan: async () => {
     set({ isLoading: true });
@@ -37,7 +41,7 @@ export const useStorageStore = create<StorageStore>((set) => ({
   selectCategory: (category) => {
     const state = useStorageStore.getState();
     if (!state.data) {
-        set({ selectedCategory: category, selectedRecord: null });
+        set({ selectedCategory: category, selectedRecord: null, view: 'inspector' }); // Switch back to inspector on category select
         return;
     }
     
@@ -48,6 +52,8 @@ export const useStorageStore = create<StorageStore>((set) => ({
     else if (category === 'cookies' && state.data.cookies.length > 0) firstRecord = state.data.cookies[0];
     else if (category === 'indexedDB' && state.data.indexedDB.length > 0) firstRecord = state.data.indexedDB[0];
 
-    set({ selectedCategory: category, selectedRecord: firstRecord });
+    set({ selectedCategory: category, selectedRecord: firstRecord, view: 'inspector' });
   },
+  
+  setView: (view) => set({ view }),
 }));
