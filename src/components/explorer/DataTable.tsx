@@ -110,7 +110,7 @@ export function DataTable() {
 
   return (
     <div className="flex-1 h-full overflow-hidden flex flex-col">
-       <div className="p-4 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+       <div className="h-16 flex items-center px-6 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shrink-0">
             <h3 className="font-semibold capitalize">{selectedCategory} Data</h3>
        </div>
        <ScrollArea className="flex-1">

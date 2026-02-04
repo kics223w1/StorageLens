@@ -38,9 +38,11 @@ export function Sidebar() {
 
     return (
         <div className="w-64 border-r bg-sidebar h-screen flex flex-col">
-            <div className="p-6 border-b">
-                <h2 className="font-bold text-lg tracking-tight">StorageLens</h2>
-                <p className="text-xs text-muted-foreground">Inspector</p>
+            <div className="h-16 flex items-center px-6 border-b shrink-0">
+                <div>
+                    <h2 className="font-bold text-lg tracking-tight">StorageLens</h2>
+                    <p className="text-xs text-muted-foreground">Inspector</p>
+                </div>
             </div>
             <ScrollArea className="flex-1">
                 <div className="p-4 space-y-2">

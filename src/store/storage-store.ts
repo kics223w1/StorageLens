@@ -25,7 +25,7 @@ export const useStorageStore = create<StorageStore>((set) => ({
     set({ isLoading: true });
     try {
       const data = await StorageScanner.scan();
-      set({ data, isLoading: false });
+      set({ data, isLoading: false, selectedCategory: 'localStorage' });
     } catch (error) {
       console.error('Scan failed', error);
       set({ isLoading: false });
