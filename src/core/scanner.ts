@@ -16,7 +16,7 @@ export class StorageScanner {
     static async scan(): Promise<StorageData> {
         const [groupByDB, cookies] = await Promise.all([
              scanIndexedDB(), 
-             Promise.resolve(scanCookies()) 
+             scanCookies() 
         ]);
         
         // LocalStorage and SessionStorage are synchronous

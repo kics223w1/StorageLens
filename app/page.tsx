@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/resizable";
 
 export default function Home() {
-  const { scan, view } = useStorageStore();
+  const { scan, view, selectedCategory } = useStorageStore();
 
   useEffect(() => {
     scan();
@@ -27,6 +27,11 @@ export default function Home() {
       <Sidebar />
       <main className="flex-1 flex flex-col min-w-0">
         {view === 'inspector' ? (
+             selectedCategory === 'cookies' ? (
+                <div className="h-full flex flex-col">
+                     <DataTable />
+                </div>
+             ) : (
              <ResizablePanelGroup direction="vertical">
                 <ResizablePanel defaultSize={50} minSize={30}>
                     <div className="h-full flex flex-col">
@@ -42,6 +47,7 @@ export default function Home() {
                     </div>
                 </ResizablePanel>
             </ResizablePanelGroup>
+            )
         ) : view === 'time-machine' ? (
             <TimeMachineView />
         ) : (
