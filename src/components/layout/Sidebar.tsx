@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useStorageStore } from "@/store/storage-store";
-import { Database, FileJson, Cookie, HardDrive, History } from "lucide-react";
+import { Database, FileJson, Cookie, HardDrive, History, Network } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function Sidebar() {
@@ -84,6 +84,19 @@ export function Sidebar() {
                         >
                             <History className="w-4 h-4" />
                             <span className="flex-1 text-left">Time Machine</span>
+                        </button>
+
+                        <button
+                             onClick={() => setView('network')}
+                             className={cn(
+                                 "w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-colors",
+                                 view === 'network'
+                                     ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium" 
+                                     : "hover:bg-sidebar-accent/50 text-muted-foreground"
+                             )}
+                        >
+                            <Network className="w-4 h-4" />
+                            <span className="flex-1 text-left">Network</span>
                         </button>
                     </div>
                 </div>

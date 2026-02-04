@@ -6,6 +6,8 @@ import { Sidebar } from "@/components/layout/Sidebar";
 import { DataTable } from "@/components/explorer/DataTable";
 import { ContentEditor } from "@/components/explorer/ContentEditor";
 import { TimeMachineView } from "@/components/explorer/TimeMachineView";
+import { NetworkView } from "@/components/network/NetworkView";
+
 import { useStorageStore } from "@/store/storage-store";
 import {
   ResizableHandle,
@@ -40,8 +42,10 @@ export default function Home() {
                     </div>
                 </ResizablePanel>
             </ResizablePanelGroup>
-        ) : (
+        ) : view === 'time-machine' ? (
             <TimeMachineView />
+        ) : (
+            <NetworkView />
         )}
       </main>
     </div>
